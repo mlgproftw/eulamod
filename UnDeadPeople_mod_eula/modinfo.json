@@ -1,0 +1,11 @@
+[
+  {
+    "type": "MOD_INFO",
+    "ident": "eulagraph",
+    "name": "Eula Graphics",
+    "authors": [ "mlgpro" ],
+    "description": "Graphics for Eula",
+    "category": "graphical",
+    "dependencies": [ "eula" ]
+  }
+]

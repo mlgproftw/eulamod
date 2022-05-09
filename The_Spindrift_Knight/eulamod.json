@@ -1,0 +1,181 @@
+[
+  {
+    "type": "profession",
+    "id": "spindrift_knight",
+    "name": "The Spindrift Knight",
+    "description": "The Spindrift Knight, a scion of the old aristocracy, and the Captain of the Knights of Favonius Reconnaissance Company.",
+    "points": 8,
+	"addictions": [
+    { "type": "alcohol", "intensity": 10 }
+    ],
+    "skills": [ { "level": 5, "name": "melee" }, { "level": 3, "name": "dodge" }, { "level": 5, "name": "cutting" }, { "level": 1, "name": "swimming"} ],
+    "items": {
+      "both": {
+        "items": [
+          "sobp",
+          "eula_boots",
+          "eula_shirt",
+		  "eula_gloves",
+		  "eula_vision",
+		  "eula_cape"
+        ]
+      }
+    },
+	"traits": [ "favonius_bladework_trait", "PRETTY", "hair_eula", "NIGHTVISION", "LIGHTSTEP", "QUICK" ],
+	"spells": [ { "id": "glacial_illumination", "level": 0 }, { "id": "spell_icetide_vortex_2", "level": 0 } ]
+  },
+  {
+    "type": "martial_art",
+    "id": "favonius_bladework_edel",
+    "name": { "str": "Favonius Bladework - Edel" },
+    "description": "As your greatsword rises and falls and sways to and fro, your distinctive and graceful poise is like that of a dancer under the moonlight: faraway, immaculate, and sublime.",
+    "initiate": [ "You start to move in an elegant rhythm and musicality that is difficult to capture in words", "%s starts to move in an elegant rhythm and musicality that is difficult to capture in words" ],
+    "learn_difficulty": 10,
+    "primary_skill": "cutting",
+    "strictly_melee": true,
+    "static_buffs": [
+      {
+        "id": "Edel_buff_war_lust",
+        "name": "Wellspring of War-Lust",
+        "description": "You attack ferociously with vengeance on your lips\n\n+1 accuracy.",
+        "melee_allowed": true,
+        "flat_bonuses": [ { "stat": "hit", "scale": 1.0 } ]
+      },
+      {
+        "id": "Edel_buff_elegance",
+        "name": "Elegance",
+        "description": "A dignified aristocrat must remain composed and elegant even amidst harsh conditions.\n\n+1.0 Dodging skill.",
+        "skill_requirements": [ { "name": "melee", "level": 3 } ],
+        "melee_allowed": true,
+        "flat_bonuses": [ { "stat": "dodge", "scale": 1.0 } ]
+      },
+	  {
+        "id": "edel_buff_millenial",
+        "name": "Millenial Movement",
+        "description": "Requires song of broken pines to proc\n\n+20% Damage.\n-12% Move Cost",
+        "req_flags": [ "SOBP" ],
+        "melee_allowed": true,
+        "mult_bonuses": [
+          { "stat": "damage", "type": "bash", "scale": 1.20 },
+          { "stat": "damage", "type": "cut", "scale": 1.20 },
+          { "stat": "damage", "type": "stab", "scale": 1.20 },
+		  { "stat": "movecost", "scale": 0.88 }
+        ]
+      }
+    ],
+    "onattack_buffs": [
+      {
+        "id": "edel_buff_onattack",
+        "name": "Consecutive Strike",
+        "description": "Your attacks deal more damage as you combo them\n\n+33% damage.\nLasts 1 turn.  Stacks 3 times.",
+        "skill_requirements": [ { "name": "melee", "level": 1 } ],
+        "melee_allowed": true,
+        "buff_duration": 1,
+        "max_stacks": 3,
+        "mult_bonuses": [
+          { "stat": "damage", "type": "bash", "scale": 1.33 },
+          { "stat": "damage", "type": "cut", "scale": 1.33 },
+          { "stat": "damage", "type": "stab", "scale": 1.33 }
+        ]
+      }
+    ],
+	"onattack_eocs":[
+	  { "id": "eoc_lightfall_sword_explosion" },
+	  { "id": "eoc_icetide_vortex" }
+	],
+    "onpause_buffs": [
+      {
+        "id": "edel_buff_onpause",
+        "name": "Elemental Skill",
+        "description": "Attacking opponents will use your elemental skill to unleash your sharp frost, swift blade.",
+        "melee_allowed": true,
+        "skill_requirements": [ { "name": "melee", "level": 4 } ],
+        "buff_duration": 1,
+        "flat_bonuses": [ { "stat": "block_effectiveness", "scale": 2.0 } ]
+      }
+    ],
+    "weapons": [ "sobp" ],
+    "weapon_category": [ "GREAT_SWORDS" ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "eoc_icetide_vortex_2",
+	"condition": { "u_has_effect": "grimheart", "intensity": 2 },
+    "effect": [
+      { "u_message": "Rack and Ruin!" },
+	  { "u_lose_effect": "grimheart" },
+	  { "u_cast_spell": { "id": "spell_lightfall_sword_explosion" } }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "eoc_icetide_vortex",
+	"condition": { "u_has_effect": "mabuff:edel_buff_onpause" },
+    "effect": [
+      { "u_message": "Crush!" },
+	  { "u_add_effect": "grimheart", "duration": 18 },
+	  { "u_cast_spell": { "id": "spell_icetide_vortex" } }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "eoc_lightfall_sword",
+	"condition": { "u_has_trait": "favonius_bladework_trait" },
+    "effect": [
+	  { "u_message": "Vengeance will be mine!" },
+      { "u_add_effect": "lightfall_sword", "duration": 7 }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "eoc_lightfall_sword_explosion",
+	"condition": { "u_has_effect": "lightfall_sword" },
+    "effect": [
+      { "u_cast_spell": { "id": "spell_lightfall_sword_explosion", "hit_self": false } }
+    ]
+  },
+  {
+    "type": "effect_type",
+    "id": "grimheart",
+    "name": [ "Grimheart"],
+    "desc": [ "\"So the waves roiled, swallowing the crown of the nobles. And ever after did each drop amidst the icy waves reflect a golden crown, each and every droplet of the spray shining with its light.\"" ],
+	"max_intensity": 2,
+	"max_duration": 18,
+	"int_add_val": 1,
+	"scaling_mods": {
+      "dex_mod": [ 2 ],
+	  "str_mod": [ 2 ]
+    }
+  },
+  {
+    "type": "effect_type",
+    "id": "lightfall_sword",
+    "name": [ "Lightfall Sword"],
+    "desc": [ "The lightfall sword summoned by your glacial illumination follows you around. Attack opponents to initiate lightfall sword explosions!" ],
+	"max_duration": 7
+  },
+  {
+    "type": "mutation",
+    "id": "favonius_bladework_trait",
+    "name": { "str": "Favonius Bladework - Edel" },
+    "points": 3,
+    "description": "Although Eula considers most of her clan's customs despicable, she personally enjoys the traditional \"Dance of Sacrifice\" and incorporates it into her style of \"Favonius Bladework.\"",
+    "player_display": true,
+    "initial_ma_styles": [
+      "favonius_bladework_edel"
+    ],
+    "valid": false
+  },
+  {
+    "id": "hair_eula",
+    "type": "mutation",
+    "name": { "str": "Hair: eula" },
+    "description": "Eula's hairstyle",
+    "points": 0,
+    "starting_trait": true,
+    "valid": false,
+    "player_display": false,
+    "vanity": true,
+    "types": [ "hair_style" ]
+  }
+]
