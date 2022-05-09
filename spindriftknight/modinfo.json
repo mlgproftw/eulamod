@@ -1,0 +1,12 @@
+[
+  {
+    "type": "MOD_INFO",
+    "ident": "eula",
+    "name": "The Spindrift Knight",
+    "authors": [ "mlgproftw" ],
+    "maintainers": [ "mlgproftw" ],
+    "description": "Adds content related to eula lawrence from genshin impact. Currently includes her sword, her skills and her clothes as part of a profession.",
+    "category": "content",
+    "dependencies": [ "dda" ]
+  }
+]
