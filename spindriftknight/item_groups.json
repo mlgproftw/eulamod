@@ -1,0 +1,28 @@
+[
+  {
+    "id": "rare_martial_arts_books",
+    "type": "item_group",
+    "copy-from": "rare_martial_arts_books",
+    "extend": {
+      "items": [
+        [ "manual_fav_bladework_edel", 1 ], [ "eula_skill_book", 1 ]
+      ]
+    }
+  },
+  {
+    "type": "item_group",
+    "id": "mansion_books",
+    "copy-from": "mansion_books",
+    "extend": {
+      "items": [
+        [ "manual_fav_bladework_edel", 20 ], [ "eula_skill_book", 20 ]
+      ]
+    }
+  },
+  {
+    "type": "item_group",
+    "id": "kids_books",
+    "copy-from": "kids_books",
+    "extend": { "items": [ [ "manual_fav_bladework_edel", 5 ], [ "eula_skill_book", 5 ] ] }
+  }
+]

@@ -21,7 +21,7 @@
         ]
       }
     },
-	"traits": [ "favonius_bladework_trait", "PRETTY", "hair_eula", "NIGHTVISION", "LIGHTSTEP", "QUICK" ],
+	"traits": [ "favonius_bladework_trait", "PRETTY", "hair_eula", "NIGHTVISION", "LIGHTSTEP", "QUICK", "STYLISH" ],
 	"spells": [ { "id": "glacial_illumination", "level": 0 }, { "id": "spell_icetide_vortex_2", "level": 0 } ]
   },
   {
@@ -94,7 +94,6 @@
         "flat_bonuses": [ { "stat": "block_effectiveness", "scale": 2.0 } ]
       }
     ],
-    "weapons": [ "sobp" ],
     "weapon_category": [ "GREAT_SWORDS" ]
   },
   {

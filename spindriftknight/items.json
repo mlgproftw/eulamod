@@ -12,7 +12,7 @@
     "bashing": 16,
     "cutting": 40,
     "to_hit": { "grip": "weapon", "length": "long", "surface": "line", "balance": "good" },
-    "material": [ "steel", "gemstone", "brass" ],
+    "material": [ "steel", "gemstone", "gold" ],
     "symbol": "/",
     "color": "blue",
     "techniques": [ "WBLOCK_1", "WIDE", "BRUTAL", "SWEEP" ],
@@ -25,8 +25,8 @@
     "id": "eula_boots",
     "repairs_like": "boots_larmor",
     "type": "ARMOR",
-    "name": { "str": "Wavecrest Waltz boots" },
-    "description": "Thigh high boots to hold those juicy thighs in",
+    "name": { "str": "Wavecrest Waltz Boots" },
+    "description": "Thigh high boots",
     "weight": "1540 g",
     "volume": "4250 ml",
     "price": 8000,
@@ -123,71 +123,49 @@
     "id": "eula_cold_res",
     "has": "WORN",
     "condition": "ALWAYS",
-    "values": [ { "value": "ARMOR_COLD", "add": 80 }, { "value": "STRENGTH", "add": 2 }, { "value": "DEXTERITY", "add": 2 }, { "value": "PERCEPTION", "add": 2 } ]
+    "values": [ { "value": "ARMOR_COLD", "add": 80 }, { "value": "STRENGTH", "add": 1 }, { "value": "DEXTERITY", "add": 1 }, { "value": "PERCEPTION", "add": 1 } ]
   },
   {
     "id": "eula_vision",
     "type": "ARMOR",
+	"repairs_like": "chainmail_hood",
     "name": { "str": "Vision" },
-    "description": "Eula's cryo vision protects her from the cold and strengthens her",
+    "description": "This cryo vision protects you from the cold and strengthens you",
     "weight": "250 g",
     "volume": "100 ml",
     "price": 100,
     "price_postapoc": 10,
 	"relic_data": { "passive_effects": [ { "id": "eula_cold_res" } ] },
-    "material": [ "gemstone" ],
+    "material": [ "gemstone", "steel" ],
     "symbol": "[",
     "color": "blue",
-	"use_action":
-	{
-      "menu_text": "Decrease cold resistance",
-      "type": "transform",
-      "target": "eula_vision_2",
-      "msg": "You decrease your cryo vision's cold resistant effects",
-      "active": false
-    },
 	"armor": [
-      { "covers": [ "torso" ], "coverage": 100, "encumbrance": 0 },
-      { "covers": [ "arm_l", "arm_r" ], "coverage": 100, "encumbrance": 0 },
-	  { "covers": [ "head" ], "coverage": 100, "encumbrance": 0 },
-	  { "covers": [ "leg_l", "leg_r" ], "coverage": 100, "encumbrance": 0 },
-	  { "covers": [ "foot_l", "foot_r" ], "coverage": 100, "encumbrance": 0 },
-	  { "covers": [ "hand_l", "hand_r" ], "coverage": 100, "encumbrance": 0 },
-	  { "covers": [ "mouth" ], "coverage": 100, "encumbrance": 0 }
+      { "covers": [ "torso" ], "specifically_covers": [ "torso_hanging_front" ], "coverage": 5, "encumbrance": 0 }
     ],
-	"warmth": 70,
-    "flags": [ "AURA" ]
+	"warmth": 5,
+    "flags": [ "OUTER", "SUPER_FANCY", "OVERSIZE", "STURDY", "BELTED" ]
   },
   {
-    "id": "eula_vision_2",
-    "type": "ARMOR",
-    "name": { "str": "Vision" },
-    "description": "Eula's cryo vision protects her from the cold and strengthens her",
-    "weight": "250 g",
-    "volume": "100 ml",
-    "price": 100,
-    "price_postapoc": 10,
-	"relic_data": { "passive_effects": [ { "id": "eula_cold_res" } ] },
-    "material": [ "gemstone" ],
-    "symbol": "[",
-    "color": "brown",
-	"use_action": {
-      "menu_text": "Increase cold resistance",
-      "type": "transform",
-      "target": "eula_vision",
-      "msg": "You increase your cryo vision's cold resistant effects",
-      "active": false
-    },
-	"armor": [
-      { "covers": [ "torso" ], "coverage": 100, "encumbrance": 0 },
-      { "covers": [ "arm_l", "arm_r" ], "coverage": 100, "encumbrance": 0 },
-	  { "covers": [ "head" ], "coverage": 100, "encumbrance": 0 },
-	  { "covers": [ "leg_l", "leg_r" ], "coverage": 100, "encumbrance": 0 },
-	  { "covers": [ "foot_l", "foot_r" ], "coverage": 100, "encumbrance": 0 },
-	  { "covers": [ "hand_l", "hand_r" ], "coverage": 100, "encumbrance": 0 },
-	  { "covers": [ "mouth" ], "coverage": 100, "encumbrance": 0 }
-    ],
-	"warmth": 20,
-    "flags": [ "AURA" ]
+    "id": "manual_fav_bladework_edel",
+    "copy-from": "book_martial",
+    "looks_like": "manual_eskrima",
+    "type": "BOOK",
+    "name": { "str": "Favonius Bladework - Edel", "str_pl": "copies of Favonius Bladework - Edel" },
+    "description": "This book details the intricacies of the bladework practiced by the favonius knights, with a noble twist.",
+    "martial_art": "favonius_bladework_edel"
+  },
+  {
+    "id": "eula_skill_book",
+    "type": "BOOK",
+    "category": "manuals",
+    "name": { "str": "Spindrift Knight Spellbook", "str_pl": "copies of Spindrift Knight Spellbook" },
+    "description": "A book on the magic used by the spindrift knight",
+    "weight": "900 g",
+    "volume": "1200 ml",
+    "price": 5000,
+    "material": [ "paper" ],
+    "symbol": "?",
+    "color": "light_gray",
+    "use_action": { "type": "learn_spell", "spells": [ "spell_icetide_vortex_2", "glacial_illumination" ] }
   }
 ]
